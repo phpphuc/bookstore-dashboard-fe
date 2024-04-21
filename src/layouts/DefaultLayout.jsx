@@ -3,12 +3,10 @@ import Sidebar from "./Sidebar";
 
 function DefaultLayout({ children }) {
   return (
-    <div className="antialiased font-sans h-full bg-white">
+    <div className="h-full bg-white">
       {/* <Header /> */}
       <Sidebar />
-      <div className="lg:pl-72">
-      {children}
-        </div>
+      <div className="lg:pl-72">{children}</div>
     </div>
   );
 }
