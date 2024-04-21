@@ -18,7 +18,7 @@ function Sidebar() {
                 <li>
                   <a
                     href="/"
-                    className="group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-slate-700 hover:text-sky-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+                    className="group flex gap-x-3 rounded-md p-4 text-base leading-6 font-semibold text-slate-700 hover:text-sky-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
                   >
                     <svg
                       className="h-6 w-6 shrink-0 text-slate-400 group-hover:text-sky-600 dark:group-hover:text-white dark:group-hover:bg-slate-800"
@@ -41,7 +41,7 @@ function Sidebar() {
                 <li>
                   <a
                     href="/orders"
-                    className="group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-slate-700 hover:text-sky-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+                    className="group flex gap-x-3 rounded-md p-4 text-base leading-6 font-semibold text-slate-700 hover:text-sky-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
                   >
                     <svg
                       className="h-6 w-6 shrink-0 text-slate-400 group-hover:text-sky-600 dark:group-hover:text-white dark:group-hover:bg-slate-800"
@@ -64,7 +64,7 @@ function Sidebar() {
                 <li>
                   <a
                     href="/san-pham"
-                    className="group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-slate-700 hover:text-sky-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+                    className="group flex gap-x-3 rounded-md p-4 text-base leading-6 font-semibold text-slate-700 hover:text-sky-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
                   >
                     <svg
                       className="h-6 w-6 shrink-0 text-slate-400 group-hover:text-sky-600 dark:group-hover:text-white dark:group-hover:bg-slate-800"
@@ -92,7 +92,7 @@ function Sidebar() {
                 <li>
                   <a
                     href="/tac-gia"
-                    className="group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-slate-700 hover:text-sky-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+                    className="group flex gap-x-3 rounded-md p-4 text-base leading-6 font-semibold text-slate-700 hover:text-sky-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
                   >
                     <svg
                       className="h-6 w-6 shrink-0 text-slate-400 group-hover:text-sky-600 dark:group-hover:text-white dark:group-hover:bg-slate-800"
@@ -115,7 +115,7 @@ function Sidebar() {
                 <li>
                   <a
                     href="/reviews"
-                    className="group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-slate-700 hover:text-sky-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+                    className="group flex gap-x-3 rounded-md p-4 text-base leading-6 font-semibold text-slate-700 hover:text-sky-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
                   >
                     <svg
                       className="h-6 w-6 shrink-0 text-slate-400 group-hover:text-sky-600 dark:group-hover:text-white dark:group-hover:bg-slate-800"
@@ -138,7 +138,7 @@ function Sidebar() {
                 <li>
                   <a
                     href="/categories"
-                    className="group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-slate-700 hover:text-sky-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+                    className="group flex gap-x-3 rounded-md p-4 text-base leading-6 font-semibold text-slate-700 hover:text-sky-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
                   >
                     <svg
                       className="h-6 w-6 shrink-0 text-slate-400 group-hover:text-sky-600 dark:group-hover:text-white dark:group-hover:bg-slate-800"
@@ -161,7 +161,7 @@ function Sidebar() {
                 <li>
                   <a
                     href="/customers"
-                    className="group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-slate-700 hover:text-sky-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+                    className="group flex gap-x-3 rounded-md p-4 text-base leading-6 font-semibold text-slate-700 hover:text-sky-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
                   >
                     <svg
                       className="h-6 w-6 shrink-0 text-slate-400 group-hover:text-sky-600 dark:group-hover:text-white dark:group-hover:bg-slate-800"
@@ -186,7 +186,7 @@ function Sidebar() {
             <li className="mt-auto">
               <a
                 href="/settings"
-                className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-sky-600 text-slate-700 hover:text-sky-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+                className="group -mx-2 flex gap-x-3 rounded-md p-4 text-base font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-sky-600 text-slate-700 hover:text-sky-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
               >
                 <svg
                   className="h-6 w-6 shrink-0 text-slate-400 group-hover:text-sky-600 dark:group-hover:text-white dark:group-hover:bg-slate-800"
