@@ -40,7 +40,7 @@ function Sidebar() {
                 </li>
                 <li>
                   <a
-                    href="/orders"
+                    href="/don-hang"
                     className="group flex gap-x-3 rounded-md p-4 text-base leading-6 font-semibold text-slate-700 hover:text-sky-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
                   >
                     <svg
@@ -114,7 +114,7 @@ function Sidebar() {
                 </li>
                 <li>
                   <a
-                    href="/reviews"
+                    href="/danh-gia"
                     className="group flex gap-x-3 rounded-md p-4 text-base leading-6 font-semibold text-slate-700 hover:text-sky-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
                   >
                     <svg
@@ -137,7 +137,7 @@ function Sidebar() {
                 </li>
                 <li>
                   <a
-                    href="/categories"
+                    href="/danh-muc"
                     className="group flex gap-x-3 rounded-md p-4 text-base leading-6 font-semibold text-slate-700 hover:text-sky-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
                   >
                     <svg
@@ -160,7 +160,7 @@ function Sidebar() {
                 </li>
                 <li>
                   <a
-                    href="/customers"
+                    href="/khach-hang"
                     className="group flex gap-x-3 rounded-md p-4 text-base leading-6 font-semibold text-slate-700 hover:text-sky-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
                   >
                     <svg

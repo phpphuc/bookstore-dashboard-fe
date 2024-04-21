@@ -161,7 +161,7 @@ function DetailProduct() {
                       type="submit"
                       className="px-3 py-2 bg-blue-500 rounded-md text-white font-medium hover:bg-blue-600"
                     >
-                      Save changes
+                      Lưu thay đổi
                     </button>
                   </div>
                 </div>{" "}
