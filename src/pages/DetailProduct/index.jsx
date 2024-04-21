@@ -8,6 +8,19 @@ function DetailProduct() {
   const [danhMucList, setDanhMucList] = useState([]);
   const [tacGiaList, setTacGiaList] = useState([]);
 
+  const fakeProduct = {
+    id: 123,
+    tieuDe: "Người Đài Bắc",
+    gia: 179000.0,
+    soLuong: 500,
+    photoURL: "ndb.jpg",
+    moTa: '"Bao gồm 14 truyện ngắn từng được đăng trên tờ Văn học hiện đại trong suốt thập niên 60 thế kỷ 20, lần đầu xuất bản vào năm 1971 song đến nay vẫn xếp thứ 7 trong danh sách 100 tiểu thuyết Hoa ngữ tiêu biểu thế kỷ 20, Người Đài Bắc là tác phẩm giữ thứ hạng cao nhất của một nhà văn còn tại thế trong danh sách này. "',
+    danhMuc: {
+      id: 1,
+      tenDanhMuc: "Danh mục 1",
+    },
+  };
+
   useEffect(() => {
     // fetch("/api/danhmuc")
     //   .then(response => {
@@ -24,6 +37,8 @@ function DetailProduct() {
     //   .catch(error => {
     //     console.error("Error fetching tac gia:", error);
     //   });
+    setProduct(fakeProduct);
+    setProductName(fakeProduct.tieuDe);
     setDanhMucList([
       { id: 1, tenDanhMuc: "Danh mục 1" },
       { id: 2, tenDanhMuc: "Danh mục 2" },
@@ -33,24 +48,6 @@ function DetailProduct() {
       { id: 2, tenTacGia: "Tacgia 2" },
     ]);
   }, []);
-
-  useEffect(() => {
-    setProduct(fakeProduct);
-    setProductName(fakeProduct.tieuDe);
-  }, []);
-
-  const fakeProduct = {
-    id: 123,
-    tieuDe: "Người Đài Bắc",
-    gia: 179000.0,
-    soLuong: 500,
-    photoURL: "ndb.jpg",
-    moTa: '"Bao gồm 14 truyện ngắn từng được đăng trên tờ Văn học hiện đại trong suốt thập niên 60 thế kỷ 20, lần đầu xuất bản vào năm 1971 song đến nay vẫn xếp thứ 7 trong danh sách 100 tiểu thuyết Hoa ngữ tiêu biểu thế kỷ 20, Người Đài Bắc là tác phẩm giữ thứ hạng cao nhất của một nhà văn còn tại thế trong danh sách này. "',
-    danhMuc: {
-      id: 1,
-      tenDanhMuc: "Danh mục 1",
-    },
-  };
 
   return (
     product && (
@@ -67,7 +64,7 @@ function DetailProduct() {
             <div className="col-span-3 xl:col-span-2 space-y-6">
               <div className="bg-white shadow-sm ring-1 ring-slate-200 rounded-md sm:rounded-lg">
                 <div className="px-4 py-5 sm:px-6">
-                  <div className="relative text-slate-400 ">
+                  <div className="relative text-slate-500 space-y-4">
                     <div>
                       <label
                         className="block font-medium text-base text-slate-700"
@@ -76,7 +73,7 @@ function DetailProduct() {
                         Tên sách
                       </label>
                       <input
-                        className="px-3 py-2 border border-slate-300 rounded-md shadow-sm mt-1 block w-full sm:text-base  text-slate-800"
+                        className="px-3 py-2 border border-slate-300 rounded-md shadow-sm mt-1 block w-full sm:text-base text-slate-500"
                         type="text"
                         id="name"
                         placeholder="Enter product name"
@@ -100,7 +97,7 @@ function DetailProduct() {
                         </div>
 
                         <input
-                          className="px-3 py-2 border border-slate-300 rounded-md shadow-sm pl-7 block w-full sm:text-base"
+                          className="px-3 py-2 border border-slate-300 rounded-md shadow-sm pl-7 block w-full text-slate-500 sm:text-base"
                           type="text"
                           id="price"
                           placeholder="0"
@@ -144,7 +141,7 @@ function DetailProduct() {
                         Mô tả
                       </label>
                       <textarea
-                        className="px-3 py-2 border border-slate-300 rounded-md shadow-sm mt-1 block w-full sm:text-base"
+                        className="px-3 py-2 border border-slate-300 rounded-md shadow-sm mt-1 block w-full h-32 sm:text-base"
                         id="description"
                         placeholder="Enter product description"
                         value={product.moTa}
@@ -156,6 +153,16 @@ function DetailProduct() {
                     <div>
                       <p className="text-gray-700">{product.description}</p>
                     </div>
+                  </div>
+                </div>
+                <div className="px-4 py-3 rounded-b-md sm:px-6 bg-slate-50">
+                  <div className="flex items-center justify-end">
+                    <button
+                      type="submit"
+                      className="px-3 py-2 bg-blue-500 rounded-md text-white font-medium hover:bg-blue-600"
+                    >
+                      Save changes
+                    </button>
                   </div>
                 </div>{" "}
               </div>
