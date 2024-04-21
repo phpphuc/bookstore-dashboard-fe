@@ -18,8 +18,8 @@ function Product() {
   }, []);
 
   const fakeProducts = [
-    { id: 1, tieuDe: "Product 1", soLuong: 90},
-    { id: 2, tieuDe: "Product 2", soLuong: 80},
+    { id: 1, tieuDe: "Product 1", soLuong: 90 },
+    { id: 2, tieuDe: "Product 2", soLuong: 80 },
   ];
 
   const productHeaders = [
@@ -32,7 +32,9 @@ function Product() {
       label: "Tên",
       className:
         "px-3 py-4 text-left text-sm tracking-wide text-slate-900 whitespace-nowrap",
-      render: (product) => product.tieuDe,
+      render: (product) => (
+        <a href={`/san-pham/${product.id}`}>{product.tieuDe}</a>
+      ),
     },
     {
       label: "Trạng thái",
@@ -48,7 +50,7 @@ function Product() {
     },
   ];
   return (
-    <div className="m-4">
+    <div className="m-8">
       <div className="px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8">
         <div>
           <h1 className="text-2xl font-medium text-slate-900">Sản phẩm</h1>
