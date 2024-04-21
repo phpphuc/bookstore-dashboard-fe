@@ -37,7 +37,7 @@ function Author() {
     },
   ];
   return (
-    <div className="m-4">
+    <div className="m-8">
       <div className="px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8">
         <div>
           <h1 className="text-2xl font-medium text-slate-900">Tác giả</h1>
