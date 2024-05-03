@@ -11,7 +11,7 @@ function Product() {
         })
         .then((data) => {
           console.log(data);
-          setProducts(data);
+          setProducts(data.listSach);
         });
     }
     fetchProducts();

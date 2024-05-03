@@ -4,7 +4,7 @@ function Author() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    async function fetchProducts() {
+    async function fetchTacGia() {
       fetch("http://localhost:8080/api/tacgia/getalltacgia")
         .then((response) => {
           return response.json();
@@ -14,7 +14,7 @@ function Author() {
           setProducts(data);
         });
     }
-    fetchProducts();
+    fetchTacGia();
   }, []);
 
   const productHeaders = [
