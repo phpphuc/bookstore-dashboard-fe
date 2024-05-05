@@ -8,6 +8,7 @@ function DetailProduct() {
   const [danhMucList, setDanhMucList] = useState([]);
   const [tacGiaList, setTacGiaList] = useState([]);
   const [danhMucId, setDanhMucId] = useState(1);
+  const [tacGiaId, setTacGiaId] = useState(0);
 
   const fakeProduct = {
     id: 123,
@@ -26,6 +27,11 @@ function DetailProduct() {
     const selectedCategoryId = event.target.value;
     setDanhMucId(selectedCategoryId);
   };
+
+  const handleTacGiaChange = (event) => {
+    const selectedTacGia = event.target.value;
+    setTacGiaId(selectedTacGia);
+  }
 
   useEffect(() => {
     // fetch("/api/danhmuc")
@@ -46,6 +52,8 @@ function DetailProduct() {
           console.log(data);
           setProduct(data);
           setProductName(data.tieuDe)
+          setDanhMucId(data.danhMuc.id)
+          setTacGiaId(data.tacGiaDTO.id)
         });
     }
     fetchProducts();
@@ -89,7 +97,8 @@ function DetailProduct() {
       "soLuong": product.soLuong,
       "photoURL": product.photoURL,
       "moTa": product.moTa,
-      "danhMuc": { "id": danhMucId }
+      "danhMuc": { "id": danhMucId },
+      "tacGiaId": tacGiaId
     });
     console.log(product);
     try {
@@ -260,7 +269,9 @@ function DetailProduct() {
                   </div>
                 </div>
                 <div className="px-4 py-5 sm:px-6 -mt-5">
-                  <select className="block px-3 py-2 w-full ring-1 ring-slate-200 rounded-md border-slate-300 shadow-sm sm:text-base">
+                  <select className="block px-3 py-2 w-full ring-1 ring-slate-200 rounded-md border-slate-300 shadow-sm sm:text-base"
+                    value={tacGiaId} onChange={handleTacGiaChange}
+                  >
                     {tacGiaList.map((tacGia) => (
                       <option key={tacGia.id} value={tacGia.id}>
                         {tacGia.tenTacGia}

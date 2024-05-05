@@ -5,7 +5,7 @@ function Product() {
 
   useEffect(() => {
     async function fetchProducts() {
-      fetch("http://localhost:8080/api/sach/getsachphantrang/1")
+      fetch("http://localhost:8080/api/sach/getsachphantrang/2")
         .then((response) => {
           return response.json();
         })
