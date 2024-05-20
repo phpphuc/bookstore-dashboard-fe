@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CardDataStats from "../../components/CardDataStats";
+import ChartOne from "../../components/Charts/ChartOne";
+import ChartTwo from "../../components/Charts/ChartTwo";
 function Dashboard() {
   const [totalSach, setTotalSach] = useState(0);
   const [totalDonHang, setTotalDonHang] = useState(0);
@@ -123,7 +125,10 @@ function Dashboard() {
           </svg>
         </CardDataStats>
       </div>
-
+      <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7">
+        <ChartOne />
+        <ChartTwo />
+      </div>
     </div>
   );
 }
