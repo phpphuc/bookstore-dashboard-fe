@@ -4,7 +4,9 @@ import Sidebar from "./Sidebar";
 function DefaultLayout({ children }) {
   return (
     <div className="h-full bg-white">
-      {/* <Header /> */}
+      <div className="lg:pl-72">
+        <Header />
+      </div>
       <Sidebar />
       <div className="lg:pl-72">{children}</div>
     </div>
