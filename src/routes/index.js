@@ -7,6 +7,9 @@ import DetailProduct from "../pages/DetailProduct";
 import Order from "../pages/Order";
 import Product from "../pages/Product";
 import Review from "../pages/Review";
+import LoginPage from "../pages/Login";
+import FullLayout from "../layouts/FullLayout";
+
 // Public routes
 const publicRoutes = [
   {
@@ -15,6 +18,11 @@ const publicRoutes = [
     props: {
       heading: 'Trang chủ',
     },
+  },
+  {
+    path: "/login",
+    component: LoginPage,
+    layout: FullLayout,
   },
   {
     path: '/san-pham',

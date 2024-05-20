@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const { user, logout } = useContext(UserContext);
+
   return (
     <div className="sticky top-0 z-999 flex w-full bg-white drop-shadow-sm">
       <div className="flex flex-grow items-center justify-between px-4 py-4 shadow-2 md:px-12">
@@ -11,7 +14,7 @@ function Header() {
           <a className="flex items-center gap-4" href="#" 
         onClick={() => setDropdownOpen(!dropdownOpen)}>
             <span className="block text-sm font-medium text-black">
-              User name
+             {user.userName}
             </span>
 
             <svg
@@ -36,8 +39,8 @@ function Header() {
             className={`absolute right-0 mt-4 flex w-36 flex-col rounded-sm border border-stroke bg-white
          ${dropdownOpen === true ? "block" : "hidden"}`}
           >
-            <button className="flex items-center px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-blue-600">
-              Log Out
+            <button className="flex items-center px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-blue-600" onClick={logout}>
+              Đăng xuất
             </button>
           </div>
         </div>
