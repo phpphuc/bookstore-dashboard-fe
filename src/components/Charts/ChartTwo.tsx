@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactApexChart from "react-apexcharts";
 
 const options = {
@@ -43,7 +43,7 @@ const options = {
   },
 
   xaxis: {
-    categories: ["H", "B", "T", "N", "S", "B", "C"],
+    categories: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
   },
   legend: {
     position: "top",
@@ -61,20 +61,62 @@ const options = {
   },
 };
 
-
 const ChartTwo = () => {
   const [state, setState] = useState({
-    series: [
-      {
-        name: "Sales",
-        data: [44, 55, 41, 67, 22, 43, 65],
-      },
-      {
-        name: "Revenue",
-        data: [13, 23, 20, 8, 13, 27, 15],
-      },
-    ],
+    series: [],
   });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:8080/api/dashboard/doanh_thu_tuan_ht"
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const apiData = await response.json();
+        const transformedData = apiData.map((item) => ({
+          name: item.danhMuc.tenDanhMuc,
+          data: item.doanhThu,
+        }));
+        setState({
+          series: transformedData,
+        });
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleOptionChange = async (event) => {
+    const selectedOption = event.target.value;
+    let apiUrl = ""; // Thay đổi URL API tương ứng với option được chọn
+    if (selectedOption === "current") {
+      apiUrl = "http://localhost:8080/api/dashboard/doanh_thu_tuan_ht";
+    } else if (selectedOption === "previous") {
+      apiUrl = "http://localhost:8080/api/dashboard/doanh_thu_tuan_truoc";
+    }
+
+    try {
+      const response = await fetch(apiUrl);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const apiData = await response.json();
+      const transformedData = apiData.map((item) => ({
+        name: item.danhMuc.tenDanhMuc,
+        data: item.doanhThu,
+      }));
+      setState({
+        series: transformedData,
+      });
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   const handleReset = () => {
     setState((prevState) => ({
@@ -87,18 +129,21 @@ const ChartTwo = () => {
     <div className="col-span-12 rounded-sm border border-stroke bg-white p-7 shadow-md xl:col-span-4">
       <div className="mb-4 justify-between gap-4 sm:flex">
         <div>
-          <h4 className="text-xl font-semibold text-black">Lợi nhuận theo tuần</h4>
+          <h4 className="text-xl font-semibold text-black">
+            Lợi nhuận theo tuần
+          </h4>
         </div>
         <div>
           <div className="relative z-20 inline-block">
             <select
-              name="#"
-              id="#"
+              name="option"
+              id="option"
               title="#"
+              onChange={handleOptionChange}
               className="relative z-20 inline-flex appearance-none bg-transparent py-1 pl-3 pr-8 text-sm font-medium outline-none"
             >
-              <option value="">Tuần này</option>
-              <option value="">Tuần trước</option>
+              <option value="current">Tuần này</option>
+              <option value="previous">Tuần trước</option>
             </select>
             <span className="absolute top-1/2 right-3 z-10 -translate-y-1/2">
               <svg
