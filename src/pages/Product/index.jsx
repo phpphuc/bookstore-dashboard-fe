@@ -5,13 +5,13 @@ function Product() {
 
   useEffect(() => {
     async function fetchProducts() {
-      fetch("http://localhost:8080/api/sach/getsachphantrang/2")
+      fetch("http://localhost:8080/api/sach/getallsach")
         .then((response) => {
           return response.json();
         })
         .then((data) => {
           console.log(data);
-          setProducts(data.listSach);
+          setProducts(data);
         });
     }
     fetchProducts();
