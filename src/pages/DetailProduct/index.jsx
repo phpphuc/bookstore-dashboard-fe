@@ -7,6 +7,8 @@ function DetailProduct() {
   const [productName, setProductName] = useState();
   const [danhMucList, setDanhMucList] = useState([]);
   const [tacGiaList, setTacGiaList] = useState([]);
+  const [danhMucId, setDanhMucId] = useState(1);
+  const [tacGiaId, setTacGiaId] = useState(0);
 
   const fakeProduct = {
     id: 123,
@@ -21,6 +23,16 @@ function DetailProduct() {
     },
   };
 
+  const handleDanhMucChange = (event) => {
+    const selectedCategoryId = event.target.value;
+    setDanhMucId(selectedCategoryId);
+  };
+
+  const handleTacGiaChange = (event) => {
+    const selectedTacGia = event.target.value;
+    setTacGiaId(selectedTacGia);
+  }
+
   useEffect(() => {
     // fetch("/api/danhmuc")
     //   .then(response => {
@@ -29,25 +41,80 @@ function DetailProduct() {
     //   .catch(error => {
     //     console.error("Error fetching danh muc:", error);
     //   });
-
-    // fetch("/api/tacgia")
-    //   .then(response => {
-    //     setTacGiaList(response.data);
-    //   })
-    //   .catch(error => {
-    //     console.error("Error fetching tac gia:", error);
-    //   });
-    setProduct(fakeProduct);
-    setProductName(fakeProduct.tieuDe);
-    setDanhMucList([
-      { id: 1, tenDanhMuc: "Danh mục 1" },
-      { id: 2, tenDanhMuc: "Danh mục 2" },
-    ]);
-    setTacGiaList([
-      { id: 1, tenTacGia: "Tac gia 1" },
-      { id: 2, tenTacGia: "Tacgia 2" },
-    ]);
+  })
+  useEffect(() => {
+    async function fetchProducts() {
+      fetch(`http://localhost:8080/api/sach/getsachbyid/${productId}`)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          setProduct(data);
+          setProductName(data.tieuDe)
+          setDanhMucId(data.danhMuc.id)
+          setTacGiaId(data.tacGiaDTO.id)
+        });
+    }
+    fetchProducts();
   }, []);
+
+  useEffect(() => {
+    async function fetchTacGia() {
+      fetch("http://localhost:8080/api/tacgia/getalltacgia")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          setTacGiaList(data);
+        });
+    }
+    fetchTacGia();
+  }, []);
+
+
+  useEffect(() => {
+    async function fetchDanhMuc() {
+      fetch("http://localhost:8080/api/danhmuc/getalldanhmuc")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          setDanhMucList(data);
+        });
+    }
+    fetchDanhMuc();
+  }, []);
+
+
+  const updateSach = async () => {
+    let data = JSON.stringify({
+      "id": productId,
+      "tieuDe": product.tieuDe,
+      "gia": product.gia,
+      "soLuong": product.soLuong,
+      "photoURL": product.photoURL,
+      "moTa": product.moTa,
+      "danhMuc": { "id": danhMucId },
+      "tacGiaId": tacGiaId
+    });
+    console.log(product);
+    try {
+      await fetch(`http://localhost:8080/api/sach/update/${productId}`, {
+        method: `put`,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: data
+      });
+      alert("Cập nhật thành công")
+    }
+    catch (error) {
+      console.error('Error updating book:', error);
+    }
+  }
 
   return (
     product && (
@@ -160,6 +227,7 @@ function DetailProduct() {
                     <button
                       type="submit"
                       className="px-3 py-2 bg-blue-500 rounded-md text-white font-medium hover:bg-blue-600"
+                      onClick={updateSach}
                     >
                       Lưu thay đổi
                     </button>
@@ -179,7 +247,9 @@ function DetailProduct() {
                   </div>
                 </div>
                 <div className="px-4 py-5 sm:px-6 -mt-5">
-                  <select className="block px-3 py-2 w-full ring-1 ring-slate-200 rounded-md border-slate-300 shadow-sm sm:text-base">
+                  <select className="block px-3 py-2 w-full ring-1 ring-slate-200 rounded-md border-slate-300 shadow-sm sm:text-base"
+                    value={danhMucId} onChange={handleDanhMucChange}
+                  >
                     {danhMucList.map((danhMuc) => (
                       <option key={danhMuc.id} value={danhMuc.id}>
                         {danhMuc.tenDanhMuc}
@@ -199,7 +269,9 @@ function DetailProduct() {
                   </div>
                 </div>
                 <div className="px-4 py-5 sm:px-6 -mt-5">
-                  <select className="block px-3 py-2 w-full ring-1 ring-slate-200 rounded-md border-slate-300 shadow-sm sm:text-base">
+                  <select className="block px-3 py-2 w-full ring-1 ring-slate-200 rounded-md border-slate-300 shadow-sm sm:text-base"
+                    value={tacGiaId} onChange={handleTacGiaChange}
+                  >
                     {tacGiaList.map((tacGia) => (
                       <option key={tacGia.id} value={tacGia.id}>
                         {tacGia.tenTacGia}

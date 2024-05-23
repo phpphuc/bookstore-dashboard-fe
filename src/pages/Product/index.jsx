@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import DataTable from "../../components/DataTable";
 function Product() {
   const [products, setProducts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     async function fetchProducts() {
-      fetch("http://localhost:8080/api/sach/getsachphantrang/1")
+      fetch("http://localhost:8080/api/sach/getallsach")
         .then((response) => {
           return response.json();
         })
@@ -17,10 +18,15 @@ function Product() {
     fetchProducts();
   }, []);
 
-  const fakeProducts = [
-    { id: 1, tieuDe: "Product 1", soLuong: 90 },
-    { id: 2, tieuDe: "Product 2", soLuong: 80 },
-  ];
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const filteredProducts = products.filter(product =>
+    product.tieuDe.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+
 
   const productHeaders = [
     {
@@ -55,11 +61,14 @@ function Product() {
         <div>
           <h1 className="text-2xl font-medium text-slate-900">Sản phẩm</h1>
         </div>
-        <div className="mt-4 flex sm:mt-0 sm:ml-4">
-          <button className="px-4 py-2 bg-blue-400 text-white rounded-md block w-full order-0 sm:order-1 sm:ml-3">
-            Thêm sản phẩm
-          </button>
-        </div>
+        <a href="/san-pham/them-sp">
+          <div className="mt-4 flex sm:mt-0 sm:ml-4">
+            <button className="px-4 py-2 bg-blue-400 text-white rounded-md block w-full order-0 sm:order-1 sm:ml-3">
+              Thêm sản phẩm
+            </button>
+          </div>
+        </a>
+
       </div>
 
       <div className="p-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -84,13 +93,15 @@ function Product() {
                 </svg>
               </div>
               <input
-                className="appearance-none w-full border border-slate-300 p-2 pl-10 rounded-md  disabled:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed "
+                className="appearance-none w-full border border-slate-300 p-2 pl-10 rounded-md disabled:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed"
                 placeholder="Tìm kiếm sản phẩm"
+                value={searchQuery}
+                onChange={handleSearchChange}
               />
             </div>
           </div>
 
-          <DataTable data={products} headers={productHeaders} />
+          <DataTable data={filteredProducts} headers={productHeaders} />
         </div>
       </div>
     </div>

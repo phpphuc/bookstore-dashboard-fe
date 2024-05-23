@@ -7,76 +7,100 @@ import DetailProduct from "../pages/DetailProduct";
 import Order from "../pages/Order";
 import Product from "../pages/Product";
 import Review from "../pages/Review";
+import LoginPage from "../pages/Login";
+import FullLayout from "../layouts/FullLayout";
+import AddProductForm from "../pages/Product/AddProductForm";
+import CreateTacGia from "../pages/Author/CreateTacGia";
+
 // Public routes
 const publicRoutes = [
   {
-    path: '/',
+    path: "/",
     component: Dashboard,
     props: {
-      heading: 'Trang chủ',
+      heading: "Trang chủ",
     },
   },
   {
-    path: '/san-pham',
+    path: "/login",
+    component: LoginPage,
+    layout: FullLayout,
+  },
+  {
+    path: "/san-pham",
     component: Product,
     props: {
-      heading: 'Sản phẩm',
+      heading: "Sản phẩm",
     },
   },
   {
-    path: '/san-pham/:productId',
+    path: "/san-pham/:productId",
     component: DetailProduct,
     props: {
-      heading: 'Sản phẩm',
+      heading: "Sản phẩm",
     },
   },
   {
-    path: '/tac-gia',
+    path: "/san-pham/them-sp",
+    component: AddProductForm,
+    props: {
+      heading: "Thêm sản phẩm",
+    },
+  },
+  {
+    path: "/tac-gia",
     component: Author,
     props: {
-      heading: 'Sản phẩm',
+      heading: "Tác giả",
     },
   },
   {
-    path: '/danh-muc',
+    path: "/tac-gia/create",
+    component: CreateTacGia,
+    props: {
+      heading: "Thêm tác giả",
+    },
+  },
+  {
+    path: "/danh-muc",
     component: Category,
     props: {
-      heading: 'Sản phẩm',
+      heading: "Sản phẩm",
     },
   },
   {
-    path: '/danh-muc/:categoryId',
+    path: "/danh-muc/:categoryId",
     component: DetailCategory,
     props: {
-      heading: 'Sản phẩm',
+      heading: "Sản phẩm",
     },
   },
   {
-    path: '/don-hang',
+    path: "/don-hang",
     component: Order,
     props: {
-      heading: 'Sản phẩm',
+      heading: "Sản phẩm",
     },
   },
   {
-    path: '/danh-gia',
+    path: "/danh-gia",
     component: Review,
     props: {
-      heading: 'Sản phẩm',
+      heading: "Sản phẩm",
     },
   },
   {
-    path: '/the-loai',
+    path: "/the-loai",
     component: Category,
     props: {
-      heading: 'Sản phẩm',
+      heading: "Sản phẩm",
     },
   },
   {
-    path: '/khach-hang',
+    path: "/khach-hang",
     component: Customer,
     props: {
-      heading: 'Sản phẩm',
+      heading: "Sản phẩm",
     },
   },
 ];
