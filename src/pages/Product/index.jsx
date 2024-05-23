@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import DataTable from "../../components/DataTable";
 function Product() {
   const [products, setProducts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     async function fetchProducts() {
@@ -17,10 +18,15 @@ function Product() {
     fetchProducts();
   }, []);
 
-  const fakeProducts = [
-    { id: 1, tieuDe: "Product 1", soLuong: 90 },
-    { id: 2, tieuDe: "Product 2", soLuong: 80 },
-  ];
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const filteredProducts = products.filter(product =>
+    product.tieuDe.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+
 
   const productHeaders = [
     {
@@ -87,13 +93,15 @@ function Product() {
                 </svg>
               </div>
               <input
-                className="appearance-none w-full border border-slate-300 p-2 pl-10 rounded-md  disabled:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed "
+                className="appearance-none w-full border border-slate-300 p-2 pl-10 rounded-md disabled:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed"
                 placeholder="Tìm kiếm sản phẩm"
+                value={searchQuery}
+                onChange={handleSearchChange}
               />
             </div>
           </div>
 
-          <DataTable data={products} headers={productHeaders} />
+          <DataTable data={filteredProducts} headers={productHeaders} />
         </div>
       </div>
     </div>

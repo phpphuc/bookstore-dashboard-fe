@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import DataTable from "../../components/DataTable";
 function Author() {
   const [products, setProducts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     async function fetchTacGia() {
@@ -16,6 +17,14 @@ function Author() {
     }
     fetchTacGia();
   }, []);
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const filteredAuthors = products.filter(author =>
+    author.tenTacGia.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const productHeaders = [
     {
@@ -74,13 +83,15 @@ function Author() {
                 </svg>
               </div>
               <input
-                className="appearance-none w-full border border-slate-300 p-2 pl-10 rounded-md  disabled:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed "
+                className="appearance-none w-full border border-slate-300 p-2 pl-10 rounded-md disabled:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed"
                 placeholder="Tìm kiếm tác giả"
+                value={searchQuery}
+                onChange={handleSearchChange}
               />
             </div>
           </div>
 
-          <DataTable data={products} headers={productHeaders} />
+          <DataTable data={filteredAuthors} headers={productHeaders} />
         </div>
       </div>
     </div>
