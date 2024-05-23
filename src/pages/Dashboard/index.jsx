@@ -29,12 +29,7 @@ function Dashboard() {
   return (
     <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7">
-        <CardDataStats
-          title="Số đơn hàng"
-          total={totalDonHang}
-          rate="0.43%"
-          levelUp
-        >
+        <CardDataStats title="Số đơn hàng" total={totalDonHang}>
           <svg
             className=""
             xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +47,10 @@ function Dashboard() {
             ></path>
           </svg>
         </CardDataStats>
-        <CardDataStats title="Doanh thu" total={`${(totalTongTien/ 1000).toFixed(1)}k`} rate="4.35%" levelUp>
+        <CardDataStats
+          title="Doanh thu"
+          total={`${(totalTongTien / 1000).toFixed(1)}k`}
+        >
           <svg
             className="fill-blue-600"
             width="20"
@@ -74,12 +72,7 @@ function Dashboard() {
             />
           </svg>
         </CardDataStats>
-        <CardDataStats
-          title="Số sản phẩm"
-          total={totalSach}
-          rate="2.59%"
-          levelUp
-        >
+        <CardDataStats title="Số sản phẩm" total={totalSach}>
           <svg
             className="fill-blue-600"
             width="22"
@@ -97,12 +90,7 @@ function Dashboard() {
             />
           </svg>
         </CardDataStats>
-        <CardDataStats
-          title="Số người dùng"
-          total={totalTaiKhoan}
-          rate="0.95%"
-          levelDown
-        >
+        <CardDataStats title="Số người dùng" total={totalTaiKhoan}>
           <svg
             className="fill-blue-600"
             width="22"
