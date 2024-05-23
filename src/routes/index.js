@@ -10,6 +10,7 @@ import Review from "../pages/Review";
 import LoginPage from "../pages/Login";
 import FullLayout from "../layouts/FullLayout";
 import AddProductForm from "../pages/Product/AddProductForm";
+import CreateTacGia from "../pages/Author/CreateTacGia";
 
 // Public routes
 const publicRoutes = [
@@ -50,7 +51,14 @@ const publicRoutes = [
     path: "/tac-gia",
     component: Author,
     props: {
-      heading: "Sản phẩm",
+      heading: "Tác giả",
+    },
+  },
+  {
+    path: "/tac-gia/create",
+    component: CreateTacGia,
+    props: {
+      heading: "Thêm tác giả",
     },
   },
   {
