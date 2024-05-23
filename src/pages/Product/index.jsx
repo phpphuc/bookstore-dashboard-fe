@@ -55,11 +55,14 @@ function Product() {
         <div>
           <h1 className="text-2xl font-medium text-slate-900">Sản phẩm</h1>
         </div>
-        <div className="mt-4 flex sm:mt-0 sm:ml-4">
-          <button className="px-4 py-2 bg-blue-400 text-white rounded-md block w-full order-0 sm:order-1 sm:ml-3">
-            Thêm sản phẩm
-          </button>
-        </div>
+        <a href="/san-pham/them-sp">
+          <div className="mt-4 flex sm:mt-0 sm:ml-4">
+            <button className="px-4 py-2 bg-blue-400 text-white rounded-md block w-full order-0 sm:order-1 sm:ml-3">
+              Thêm sản phẩm
+            </button>
+          </div>
+        </a>
+
       </div>
 
       <div className="p-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
