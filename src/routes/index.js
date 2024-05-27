@@ -11,6 +11,7 @@ import LoginPage from "../pages/Login";
 import FullLayout from "../layouts/FullLayout";
 import AddProductForm from "../pages/Product/AddProductForm";
 import CreateTacGia from "../pages/Author/CreateTacGia";
+import AddCategory from "../pages/AddCategory";
 
 // Public routes
 const publicRoutes = [
@@ -66,6 +67,13 @@ const publicRoutes = [
     component: Category,
     props: {
       heading: "Sản phẩm",
+    },
+  },
+  {
+    path: "/danh-muc/them",
+    component: AddCategory,
+    props: {
+      heading: "Danh mục",
     },
   },
   {

@@ -181,7 +181,7 @@ function DetailProduct() {
 
                     <div>
                       <label
-                        className="block font-medium text-base text-slate-700 dark:text-slate-200"
+                        className="block font-medium text-base text-slate-700"
                         htmlFor="quantity"
                       >
                         Số lượng
@@ -202,7 +202,7 @@ function DetailProduct() {
                     </div>
                     <div>
                       <label
-                        className="block font-medium text-base text-slate-700 dark:text-slate-200"
+                        className="block font-medium text-base text-slate-700"
                         htmlFor="description"
                       >
                         Mô tả

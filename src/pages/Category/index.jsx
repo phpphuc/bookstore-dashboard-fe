@@ -17,11 +17,6 @@ function Category() {
     fetchProducts();
   }, []);
 
-  const fakeProducts = [
-    { id: 1, tenDanhMuc: "Danh mục 1" },
-    { id: 2, tenDanhMuc: "Danh mục 2" },
-  ];
-
   const productHeaders = [
     {
       label: "ID",
@@ -50,9 +45,9 @@ function Category() {
           <h1 className="text-2xl font-medium text-slate-900">Danh mục</h1>
         </div>
         <div className="mt-4 flex sm:mt-0 sm:ml-4">
-          <button className="px-4 py-2 bg-blue-400 text-white rounded-md block w-full order-0 sm:order-1 sm:ml-3">
+          <a href="/danh-muc/them" className="px-4 py-2 bg-blue-400 text-white rounded-md block w-full order-0 sm:order-1 sm:ml-3">
             Thêm danh mục
-          </button>
+          </a>
         </div>
       </div>
 
