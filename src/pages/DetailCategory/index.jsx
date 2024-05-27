@@ -6,15 +6,46 @@ function DetailCategory() {
   const [category, setCategory] = useState();
   const [categoryName, setCategoryName] = useState();
 
-  const fakeCategory = {
-    id: 123,
-    tenDanhMuc: "Danh mục 1",
-  };
-
   useEffect(() => {
-    setCategory(fakeCategory);
-    setCategoryName(fakeCategory.tenDanhMuc);
+    const fetchCategory = async () => {
+      await fetch(
+        `http://localhost:8080/api/danhmuc/getdanhmucbyid/${categoryId}`
+      ).then((response) => {
+        return response.json();
+      }).then((response) => {
+        setCategory(response);
+        setCategoryName(response.tenDanhMuc);
+      });
+    };
+    fetchCategory();
   }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/danhmuc/update/${categoryId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(category),
+        }
+      );
+      console.log(response);
+      if (response.ok) {
+        alert("Cập nhật danh mục thành công");
+        window.location.reload();
+      } else {
+        alert("Cập nhật danh mục thất bại");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
+
 
   return (
     category && (
@@ -46,7 +77,7 @@ function DetailCategory() {
                         placeholder="Enter category name"
                         value={category.tenDanhMuc}
                         onChange={(e) =>
-                          setCategory({ ...category, tieuDe: e.target.value })
+                          setCategory({ ...category, tenDanhMuc: e.target.value })
                         }
                       />
                     </div>
@@ -55,7 +86,7 @@ function DetailCategory() {
                 <div className="px-4 py-3 rounded-b-md sm:px-6 bg-slate-50">
                   <div className="flex items-center justify-end">
                     <button
-                      type="submit"
+                      onClick = {handleSubmit}
                       className="px-3 py-2 bg-blue-500 rounded-md text-white font-medium hover:bg-blue-600"
                     >
                       Lưu thay đổi
