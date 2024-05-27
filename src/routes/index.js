@@ -12,6 +12,7 @@ import FullLayout from "../layouts/FullLayout";
 import AddProductForm from "../pages/Product/AddProductForm";
 import CreateTacGia from "../pages/Author/CreateTacGia";
 import AddCategory from "../pages/AddCategory";
+import DetailAuthor from "../pages/DetailAuthor";
 
 // Public routes
 const publicRoutes = [
@@ -51,6 +52,13 @@ const publicRoutes = [
   {
     path: "/tac-gia",
     component: Author,
+    props: {
+      heading: "Tác giả",
+    },
+  },
+  {
+    path: "/tac-gia/:authorId",
+    component: DetailAuthor,
     props: {
       heading: "Tác giả",
     },
