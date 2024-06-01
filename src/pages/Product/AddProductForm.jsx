@@ -64,98 +64,100 @@ const AddProductForm = () => {
     };
 
     return (
-        <div className="mx-auto bg-white shadow-md rounded-lg p-6">
-            <h2 className="text-2xl font-bold mb-4">Thêm Sản Phẩm Mới</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-medium mb-2">Tiêu đề</label>
-                    <input
-                        type="text"
-                        value={tieuDe}
-                        onChange={(e) => setTieuDe(e.target.value)}
-                        className="w-full p-2 border border-gray-300 rounded-lg"
-                        required
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-medium mb-2">Giá</label>
-                    <input
-                        type="number"
-                        value={gia}
-                        onChange={(e) => setGia(e.target.value)}
-                        className="w-full p-2 border border-gray-300 rounded-lg"
-                        required
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-medium mb-2">Số lượng</label>
-                    <input
-                        type="number"
-                        value={soLuong}
-                        onChange={(e) => setSoLuong(e.target.value)}
-                        className="w-full p-2 border border-gray-300 rounded-lg"
-                        required
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-medium mb-2">Photo URL</label>
-                    <input
-                        type="text"
-                        value={photoURL}
-                        onChange={(e) => setPhotoURL(e.target.value)}
-                        className="w-full p-2 border border-gray-300 rounded-lg"
-                        required
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-medium mb-2">Mô tả</label>
-                    <textarea
-                        value={moTa}
-                        onChange={(e) => setMoTa(e.target.value)}
-                        className="w-full p-2 border border-gray-300 rounded-lg"
-                        rows="4"
-                        required
-                    ></textarea>
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-medium mb-2">Danh mục</label>
-                    <select
-                        value={danhMucId}
-                        onChange={(e) => setDanhMucId(e.target.value)}
-                        className="w-full p-2 border border-gray-300 rounded-lg"
-                        required
+        <div className="m-8">
+            <div className="mx-auto bg-white shadow-md rounded-lg p-6">
+                <h2 className="text-2xl font-bold mb-4">Thêm Sản Phẩm Mới</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-medium mb-2">Tiêu đề</label>
+                        <input
+                            type="text"
+                            value={tieuDe}
+                            onChange={(e) => setTieuDe(e.target.value)}
+                            className="w-full p-2 border border-gray-300 rounded-lg"
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-medium mb-2">Giá</label>
+                        <input
+                            type="number"
+                            value={gia}
+                            onChange={(e) => setGia(e.target.value)}
+                            className="w-full p-2 border border-gray-300 rounded-lg"
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-medium mb-2">Số lượng</label>
+                        <input
+                            type="number"
+                            value={soLuong}
+                            onChange={(e) => setSoLuong(e.target.value)}
+                            className="w-full p-2 border border-gray-300 rounded-lg"
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-medium mb-2">Photo URL</label>
+                        <input
+                            type="text"
+                            value={photoURL}
+                            onChange={(e) => setPhotoURL(e.target.value)}
+                            className="w-full p-2 border border-gray-300 rounded-lg"
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-medium mb-2">Mô tả</label>
+                        <textarea
+                            value={moTa}
+                            onChange={(e) => setMoTa(e.target.value)}
+                            className="w-full p-2 border border-gray-300 rounded-lg"
+                            rows="4"
+                            required
+                        ></textarea>
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-medium mb-2">Danh mục</label>
+                        <select
+                            value={danhMucId}
+                            onChange={(e) => setDanhMucId(e.target.value)}
+                            className="w-full p-2 border border-gray-300 rounded-lg"
+                            required
+                        >
+                            <option value="">Chọn danh mục</option>
+                            {categories.map((category) => (
+                                <option key={category.id} value={category.id}>
+                                    {category.tenDanhMuc}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-medium mb-2">Tác giả</label>
+                        <select
+                            multiple
+                            value={tacGiaIds}
+                            onChange={(e) => setTacGiaIds(Array.from(e.target.selectedOptions, option => option.value))}
+                            className="w-full p-2 border border-gray-300 rounded-lg"
+                            required
+                        >
+                            {authors.map((author) => (
+                                <option key={author.id} value={author.id}>
+                                    {author.tenTacGia}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <button
+                        type="submit"
+                        className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300"
                     >
-                        <option value="">Chọn danh mục</option>
-                        {categories.map((category) => (
-                            <option key={category.id} value={category.id}>
-                                {category.tenDanhMuc}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-medium mb-2">Tác giả</label>
-                    <select
-                        multiple
-                        value={tacGiaIds}
-                        onChange={(e) => setTacGiaIds(Array.from(e.target.selectedOptions, option => option.value))}
-                        className="w-full p-2 border border-gray-300 rounded-lg"
-                        required
-                    >
-                        {authors.map((author) => (
-                            <option key={author.id} value={author.id}>
-                                {author.tenTacGia}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <button
-                    type="submit"
-                    className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300"
-                >
-                    Thêm Sản Phẩm
-                </button>
-            </form>
+                        Thêm Sản Phẩm
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };

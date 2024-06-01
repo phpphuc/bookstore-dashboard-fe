@@ -36,7 +36,7 @@ function Author() {
       label: "Tên",
       className:
         "px-3 py-4 text-left text-sm font-semibold tracking-wide text-slate-900 whitespace-nowrap",
-      render: (item) => item.tenTacGia,
+      render: (item) => <a href={`/tac-gia/${item.id}`}>{item.tenTacGia}</a>,
     },
     {
       label: "Số lượng sách",

@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-function DetailCategory() {
-  const { categoryId } = useParams();
-  const [category, setCategory] = useState();
-  const [categoryName, setCategoryName] = useState();
+function DetailAuthor() {
+  const { authorId } = useParams();
+  const [author, setAuthor] = useState();
+  const [authorName, setAuthorName] = useState();
 
   useEffect(() => {
-    const fetchCategory = async () => {
+    const fetchAuthor = async () => {
       await fetch(
-        `http://localhost:8080/api/danhmuc/getdanhmucbyid/${categoryId}`
+        `http://localhost:8080/api/tacgia/getTacGia/${authorId}`
       ).then((response) => {
         return response.json();
       }).then((response) => {
-        setCategory(response);
-        setCategoryName(response.tenDanhMuc);
+        setAuthor(response);
+        setAuthorName(response.tenTacGia);
       });
     };
-    fetchCategory();
+    fetchAuthor();
   }, []);
 
   const handleSubmit = async (e) => {
@@ -25,21 +25,21 @@ function DetailCategory() {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/api/danhmuc/update/${categoryId}`,
+        `http://localhost:8080/api/tacgia/update/${authorId}`,
         {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(category),
+          body: JSON.stringify(author),
         }
       );
       console.log(response);
       if (response.ok) {
-        alert("Cập nhật danh mục thành công");
+        alert("Cập nhật tác giả thành công");
         window.location.reload();
       } else {
-        alert("Cập nhật danh mục thất bại");
+        alert("Cập nhật tác giả thất bại");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -48,12 +48,12 @@ function DetailCategory() {
 
 
   return (
-    category && (
+    author && (
       <div className="m-8">
         <div className="px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <div>
             <h1 className="text-2xl font-medium text-slate-900">
-              {categoryName}
+             {authorName} 
             </h1>
           </div>
         </div>
@@ -74,10 +74,28 @@ function DetailCategory() {
                         className="px-3 py-2 border border-slate-300 rounded-md shadow-sm mt-1 block w-full sm:text-base text-slate-500"
                         type="text"
                         id="name"
-                        placeholder="Enter category name"
-                        value={category.tenDanhMuc}
+                        placeholder="Nhập tên tác giả"
+                        value={author.tenTacGia}
                         onChange={(e) =>
-                          setCategory({ ...category, tenDanhMuc: e.target.value })
+                          setAuthor({ ...author, tenTacGia: e.target.value })
+                        }
+                      />
+                    </div>
+                    <div>
+                      <label
+                        className="block font-medium text-base text-slate-700"
+                        htmlFor="image"
+                      >
+                        Ảnh
+                      </label>
+                      <input
+                        className="px-3 py-2 border border-slate-300 rounded-md shadow-sm mt-1 block w-full sm:text-base text-slate-500"
+                        type="text"
+                        id="image"
+                        placeholder="Nhập đường dẫn tới ảnh"
+                        value={author.image}
+                        onChange={(e) =>
+                          setAuthor({ ...author, image: e.target.value })
                         }
                       />
                     </div>
@@ -102,4 +120,4 @@ function DetailCategory() {
   );
 }
 
-export default DetailCategory;
+export default DetailAuthor;

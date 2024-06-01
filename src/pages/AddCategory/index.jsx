@@ -1,33 +1,16 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 
-function DetailCategory() {
-  const { categoryId } = useParams();
-  const [category, setCategory] = useState();
-  const [categoryName, setCategoryName] = useState();
-
-  useEffect(() => {
-    const fetchCategory = async () => {
-      await fetch(
-        `http://localhost:8080/api/danhmuc/getdanhmucbyid/${categoryId}`
-      ).then((response) => {
-        return response.json();
-      }).then((response) => {
-        setCategory(response);
-        setCategoryName(response.tenDanhMuc);
-      });
-    };
-    fetchCategory();
-  }, []);
+function AddCategory() {
+  const [category, setCategory] = useState({tenDanhMuc:""});
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const response = await fetch(
-        `http://localhost:8080/api/danhmuc/update/${categoryId}`,
+        `http://localhost:8080/api/danhmuc/createdanhmuc`,
         {
-          method: "PUT",
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
@@ -36,16 +19,15 @@ function DetailCategory() {
       );
       console.log(response);
       if (response.ok) {
-        alert("Cập nhật danh mục thành công");
-        window.location.reload();
+        alert("Tạo danh mục thành công");
+        window.location.href = "/danh-muc";
       } else {
-        alert("Cập nhật danh mục thất bại");
+        alert("Tạo danh mục thất bại");
       }
     } catch (error) {
       console.error("Error:", error);
     }
-  }
-
+  };
 
   return (
     category && (
@@ -53,7 +35,7 @@ function DetailCategory() {
         <div className="px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <div>
             <h1 className="text-2xl font-medium text-slate-900">
-              {categoryName}
+              Thêm danh mục
             </h1>
           </div>
         </div>
@@ -74,10 +56,13 @@ function DetailCategory() {
                         className="px-3 py-2 border border-slate-300 rounded-md shadow-sm mt-1 block w-full sm:text-base text-slate-500"
                         type="text"
                         id="name"
-                        placeholder="Enter category name"
+                        placeholder="Nhập tên danh mục"
                         value={category.tenDanhMuc}
                         onChange={(e) =>
-                          setCategory({ ...category, tenDanhMuc: e.target.value })
+                          setCategory({
+                            ...category,
+                            tenDanhMuc: e.target.value,
+                          })
                         }
                       />
                     </div>
@@ -86,10 +71,10 @@ function DetailCategory() {
                 <div className="px-4 py-3 rounded-b-md sm:px-6 bg-slate-50">
                   <div className="flex items-center justify-end">
                     <button
-                      onClick = {handleSubmit}
+                      onClick={handleSubmit}
                       className="px-3 py-2 bg-blue-500 rounded-md text-white font-medium hover:bg-blue-600"
                     >
-                      Lưu thay đổi
+                      Thêm
                     </button>
                   </div>
                 </div>
@@ -102,4 +87,4 @@ function DetailCategory() {
   );
 }
 
-export default DetailCategory;
+export default AddCategory;
